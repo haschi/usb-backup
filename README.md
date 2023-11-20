@@ -39,7 +39,7 @@ Getestet für
 
 * Die Installation richtet die Sicherung nur für ein USB Laufwerk ein.
 * Die Ausschlussliste wird zum Installationszeitpunkt generiert, sollte aber besser bei der Ausführung erstellt werden.
-* Das geht natürlich alles nur, wenn das USB Laufwerk automatisch eingebunden wird. Mit Ubunut Desktop geht's natürlich.
+* Das geht natürlich alles nur, wenn das USB Laufwerk automatisch eingebunden wird. Mit Ubunut Desktop geht's natürlich!
 
 ## Hintergrund
 
