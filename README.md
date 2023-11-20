@@ -22,6 +22,11 @@ Getestet für
 * Automatische Installation
 * Berücksichtigung einer Liste von Verzeichnissen und Dateien, die von der Sicherung ausgeschlossen werden.
 
+### TODO
+
+ * Inkrementelles Backup
+ * Backup in ein verschlüsseltes und kompromiertes tar kopieren.
+
 ## Nicht Funktionen
 
 * Kein inkrementelles Backup; es wird nur ein Spiegel angelegt
