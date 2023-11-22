@@ -38,9 +38,7 @@ on_exit () {
   # Zusätzliche eine Benachrichtigung, falls interaktive Shell
   # (Das Skript wurde nicht von Systemd, sondern vom Anwender in
   # einer Shell aufgerufen.)
-  notify-send --expire-time 4000 --icon "$icon" --urgency=normal "USB Backup" "$message"
-
-  # TODO: Interaktice checken, Fehler Icon.
+  notify-send --expire-time 4000 --icon "$icon" --urgency=normal "USB Backup" "$message" 2> /dev/null
 }
 
 
@@ -59,18 +57,35 @@ if [[ ! -d $1 ]]; then
   exit 10
 fi
 
+notify () {
+  notify-send --expire-time 4000 --urgency=normal "USB Backup" $1 2>/dev/null || echo $1
+}
 
-# Wichtig: Ohne abschließendes /
-TARGET_MOUNTPOINT="$1"
-TARGET_DIRECTORY="$TARGET_MOUNTPOINT/$HOSTNAME/$USER"
+WEEK=$(date +"%W")
+BACKUP_DATE=$(date +"%Y%m%d-%H%M%S")
+BACKUP_DIR="${1}/${HOSTNAME}/${USER}/${WEEK}"
+BACKUP_PATH="${BACKUP_DIR}/${BACKUP_DATE}"
+LATEST_BACKUP="${BACKUP_DIR}/latest"
 
-notify-send --expire-time 4000 --urgency=normal "USB Backup" "Backup gestartet"
-echo "Synchronisiere $HOME mit $TARGET_DIRECTORY"
-
-# mkdir -p "$TARGET_DIRECTORY"
+echo "Synchronisiere $HOME mit $BACKUP_PATH"
 exclude_file=${XDG_CONFIG_HOME-$HOME/.config}/usb-backup/excludes
 
-rsync --archive --verbose --delete "$HOME"/ "$TARGET_DIRECTORY" \
-  --mkpath \
-  --munge-links \
-  --exclude-from=$exclude_file
+mkdir -p "$BACKUP_DIR" 
+pushd "${BACKUP_DIR}"
+
+[ -L "./latest" ] && notify "Inkrementelles Backup" || notify "Vollständiges Backup"
+# Full Backup
+
+  
+rsync --archive --verbose "${HOME}"/ \
+--mkpath \
+--partial \
+--progress \
+--link-dest="../latest" \
+--exclude-from="${exclude_file}" \
+"${BACKUP_DATE}"
+
+
+rm -rf ./latest
+ln -s "${BACKUP_DATE}" ./latest
+popd 

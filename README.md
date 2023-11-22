@@ -15,21 +15,22 @@ Getestet für
 
 ## Funktionen
 
-* Sichert die Daten im Home Verzeichnis des Benutzers auf einem USB Laufwerk getrennt nach Rechner und Benutzer
+* Sichert die Daten des Home Verzeichnisses eines Benutzers auf einem USB Laufwerk.
+* Die Sicherungen auf dem USB-Laufwerk sind nach folgendem Schema aufgebau:
+  * `$HOSTNAME/$USER/$WEEK/$DATE_TIME`
 * Die Sicherung wird gestartet, sobald ein bekanntes USB Laufwerk angeschlossen wird.
-* Ausführliche Protokollierung der Sicherung
+* Ausführliche Protokollierung der Sicherung erfolgt im Systemlog
 * Benachrichtigung über den Verlauf der Sicherung im Benachrichtigungsfeld des Windowmanagers
 * Automatische Installation
 * Berücksichtigung einer Liste von Verzeichnissen und Dateien, die von der Sicherung ausgeschlossen werden.
+  * Die Konfiguration erfolgt in der Datei `~/.config/usb-back/exclude` und entspricht dem Filterformat des *rsync* Befehls. (Siehe `man rsync`)
 
 ### TODO
 
- * Inkrementelles Backup
- * Backup in ein verschlüsseltes und kompromiertes tar kopieren.
+ * Backup in ein verschlüsseltes und komprimiertes tar kopieren.
 
 ## Nicht Funktionen
 
-* Kein inkrementelles Backup; es wird nur ein Spiegel angelegt
 * Es findet keine Prüfung statt, ob genügend freier Speicher auf dem USB Laufwerk für die Sicherung vorhanden ist. Das Backup sollte in diesem Fall mit einer Fehlermeldung beendet werden (*nicht getestet*)
 * Backups werden nicht komprimiert.
 * Backups werden nicht verschlüsselt. Abhilfe schafft aber ein verschlüsseltes USB Laufwerk. (Empfohlen)
