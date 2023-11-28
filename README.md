@@ -17,7 +17,7 @@ Getestet für
 
 * Sichert die Daten des Home Verzeichnisses eines Benutzers auf einem USB Laufwerk.
 * Die Sicherungen auf dem USB-Laufwerk sind nach folgendem Schema aufgebau:
-  * `$HOSTNAME/$USER/$WEEK/$DATE_TIME`
+  * `$USER/$HOSTNAME/$WEEK/$DATE_TIME`
 * Die Sicherung wird gestartet, sobald ein bekanntes USB Laufwerk angeschlossen wird.
 * Ausführliche Protokollierung der Sicherung erfolgt im Systemlog
 * Benachrichtigung über den Verlauf der Sicherung im Benachrichtigungsfeld des Windowmanagers
