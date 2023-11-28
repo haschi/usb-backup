@@ -15,7 +15,7 @@ Getestet für
 
 ## Funktionen
 
-* Sichert die Daten des Home Verzeichnisses eines Benutzers auf einem USB Laufwerk.
+* Sichert die Daten des *$HOME* Verzeichnisses eines Benutzers auf einem USB Laufwerk.
 * Die Sicherungen auf dem USB-Laufwerk sind nach folgendem Schema aufgebau:
   * `$USER/$HOSTNAME/$WEEK/$DATE_TIME`
 * Die Sicherung wird gestartet, sobald ein bekanntes USB Laufwerk angeschlossen wird.
@@ -28,6 +28,7 @@ Getestet für
 ### TODO
 
  * Backup in ein verschlüsseltes und komprimiertes tar kopieren.
+ * Das Backup kann durch mehrere USB Laufwerke angestoßen werden.
 
 ## Nicht Funktionen
 
