@@ -63,7 +63,7 @@ notify () {
 
 WEEK=$(date +"%W")
 BACKUP_DATE=$(date +"%Y%m%d-%H%M%S")
-BACKUP_DIR="${1}/${HOSTNAME}/${USER}/${WEEK}"
+BACKUP_DIR="${1}/${USER}/${HOSTNAME}/${WEEK}"
 BACKUP_PATH="${BACKUP_DIR}/${BACKUP_DATE}"
 LATEST_BACKUP="${BACKUP_DIR}/latest"
 

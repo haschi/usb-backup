@@ -68,7 +68,7 @@ Für jeden Rechner und jeden Benutzer wird automatisch ein eigenes Verzeichnis f
 
 Das Protokoll des Dienstes lässt sich mit folgendem Befehl anzeigen:
 
-```
+```bash
 journalctl --user -xef -u backup.service
 ```
 
