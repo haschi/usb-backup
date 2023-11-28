@@ -29,6 +29,7 @@ Getestet für
 
  * Backup in ein verschlüsseltes und komprimiertes tar kopieren.
  * Das Backup kann durch mehrere USB Laufwerke angestoßen werden.
+ * Das Backup zusaätzlich komprimieren, verschlüsseln und in einem Cloud Speicher sichern.
 
 ## Nicht Funktionen
 
